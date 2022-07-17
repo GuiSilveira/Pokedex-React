@@ -5,13 +5,15 @@ import Pokemon from "./pages/pokemon/Pokemon";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/pokemon/:id" element={<Pokemon />} />
-        <Route path="*" element={<ErrorPage />}></Route>
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pokemon/:id" element={<Pokemon />} />
+          <Route path="*" element={<ErrorPage />}></Route>
+        </Routes>
+      </Router>
+    </>
   );
 }
 
