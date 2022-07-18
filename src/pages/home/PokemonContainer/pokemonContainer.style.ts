@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledListItem = styled.li`
+  background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   text-align: center;

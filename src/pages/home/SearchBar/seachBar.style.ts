@@ -6,4 +6,5 @@ export const StyledInput = styled.input`
   padding: 4px 8px;
   width: 100%;
   text-align: center;
+  background-image: url("src/assets/svg/Lupa.svg");
 `;
