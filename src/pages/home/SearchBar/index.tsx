@@ -1,7 +1,9 @@
+import { StyledInput } from "./seachBar.style";
+
 export default function SearchBar() {
   return (
     <form action="">
-      <input type="search" placeholder="Procurar" />
+      <StyledInput type="search" placeholder="Procurar" />
     </form>
   );
 }

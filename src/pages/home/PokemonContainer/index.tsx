@@ -1,11 +1,19 @@
+import {
+  StyledListItem,
+  StyledPokemonLabel,
+  StyledPokemonNumber,
+} from "./pokemonContainer.style";
+
+import { ReactComponent as PokemonPreview } from "../../../assets/svg/pokemonShadow.svg";
+
 export default function PokemonContainer() {
   return (
-    <li>
+    <StyledListItem>
       <div>
-        <p>#123</p>
-        <img src="#" alt="Pokemon Photo" />
+        <StyledPokemonNumber>#123</StyledPokemonNumber>
+        <PokemonPreview />
       </div>
-      <p>Pokemon</p>
-    </li>
+      <StyledPokemonLabel>Pokemon Name</StyledPokemonLabel>
+    </StyledListItem>
   );
 }

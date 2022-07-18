@@ -1,14 +1,15 @@
 import PokemonContainer from "../PokemonContainer";
+import { StyledList } from "./pokemonTable.style";
 
 export default function PokemonTable() {
   return (
     <section>
-      <ul>
+      <StyledList>
         <PokemonContainer />
         <PokemonContainer />
         <PokemonContainer />
         <PokemonContainer />
-      </ul>
+      </StyledList>
     </section>
   );
 }
