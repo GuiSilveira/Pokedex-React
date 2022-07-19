@@ -1,9 +1,22 @@
+import { ChangeEvent, useState } from "react";
 import { StyledInput } from "./seachBar.style";
 
-export default function SearchBar() {
+type Props = {
+  setSearchData: Function;
+};
+
+export default function SearchBar({ setSearchData }: Props) {
+  const handleSearchData = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchData(event.target.value);
+  };
+
   return (
     <form>
-      <StyledInput type="search" placeholder="Procurar" />
+      <StyledInput
+        type="search"
+        placeholder="Procurar"
+        onChange={handleSearchData}
+      />
     </form>
   );
 }

@@ -6,14 +6,24 @@ import {
 
 import { ReactComponent as PokemonPreview } from "../../../assets/svg/pokemonShadow.svg";
 
-export default function PokemonContainer() {
+type Props = {
+  pokemonNumber: number;
+  pokemonName: string;
+};
+
+export default function PokemonContainer({
+  pokemonNumber,
+  pokemonName,
+}: Props) {
   return (
     <StyledListItem>
       <div>
-        <StyledPokemonNumber>#123</StyledPokemonNumber>
+        <StyledPokemonNumber>{"#" + pokemonNumber}</StyledPokemonNumber>
         <PokemonPreview />
       </div>
-      <StyledPokemonLabel>Pokemon Name</StyledPokemonLabel>
+      <StyledPokemonLabel>
+        {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
+      </StyledPokemonLabel>
     </StyledListItem>
   );
 }

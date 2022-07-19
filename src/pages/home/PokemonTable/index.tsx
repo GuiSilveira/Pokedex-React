@@ -1,14 +1,24 @@
 import PokemonContainer from "../PokemonContainer";
 import { StyledList } from "./pokemonTable.style";
+import { MOCK } from "../../../constants/mock";
 
-export default function PokemonTable() {
+type Props = {
+  searchData: string;
+};
+
+export default function PokemonTable({ searchData }: Props) {
   return (
     <section>
       <StyledList>
-        <PokemonContainer />
-        <PokemonContainer />
-        <PokemonContainer />
-        <PokemonContainer />
+        {MOCK.filter((value) => value.name === searchData.toLowerCase()).map(
+          (value) => (
+            <PokemonContainer
+              key={value.id}
+              pokemonNumber={value.id}
+              pokemonName={value.name}
+            />
+          )
+        )}
       </StyledList>
     </section>
   );
