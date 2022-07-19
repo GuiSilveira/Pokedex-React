@@ -11,7 +11,7 @@ export default function SearchBar({ setSearchData }: Props) {
   };
 
   return (
-    <form>
+    <form onSubmit={(event) => event.preventDefault()}>
       <StyledInput
         type="search"
         placeholder="Procurar"

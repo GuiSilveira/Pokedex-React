@@ -14,8 +14,9 @@ export default function PokemonTable({ searchData }: Props) {
           (value) => (
             <PokemonContainer
               key={value.id}
-              pokemonNumber={value.id}
+              pokemonNumber={"" + value.id}
               pokemonName={value.name}
+              pokemonType={value.type.name}
             />
           )
         )}

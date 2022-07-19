@@ -5,23 +5,32 @@ import {
 } from "./pokemonContainer.style";
 
 import { ReactComponent as PokemonPreview } from "../../../assets/svg/pokemonShadow.svg";
+import { TYPES } from "../../../constants/types";
 
 type Props = {
-  pokemonNumber: number;
+  pokemonNumber: string;
   pokemonName: string;
+  pokemonType: string;
 };
 
 export default function PokemonContainer({
   pokemonNumber,
   pokemonName,
+  pokemonType,
 }: Props) {
   return (
-    <StyledListItem>
+    <StyledListItem color={TYPES[pokemonType as keyof typeof TYPES].color}>
       <div>
-        <StyledPokemonNumber>{"#" + pokemonNumber}</StyledPokemonNumber>
+        <StyledPokemonNumber
+          color={TYPES[pokemonType as keyof typeof TYPES].color}
+        >
+          {"#" + pokemonNumber.padStart(3, "0")}
+        </StyledPokemonNumber>
         <PokemonPreview />
       </div>
-      <StyledPokemonLabel>
+      <StyledPokemonLabel
+        color={TYPES[pokemonType as keyof typeof TYPES].color}
+      >
         {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
       </StyledPokemonLabel>
     </StyledListItem>
