@@ -7,15 +7,23 @@ import { useState } from "react";
 
 export default function Home() {
   const [searchData, setSearchData] = useState("");
+  const [pokemonList, setPokemonList] = useState([]);
 
   return (
     <StyledMain>
       <StyledDiv>
         <Logo />
-        <SortButton />
+        <SortButton
+          pokemonTable={pokemonList}
+          setPokemonTable={setPokemonList}
+        />
       </StyledDiv>
       <SearchBar setSearchData={setSearchData} />
-      <PokemonTable searchData={searchData} />
+      <PokemonTable
+        searchData={searchData}
+        pokemonTable={pokemonList}
+        setPokemonTable={setPokemonList}
+      />
     </StyledMain>
   );
 }
