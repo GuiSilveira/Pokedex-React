@@ -1,5 +1,5 @@
 import { StyledList } from "./pokemonTable.style";
-import { Pokemon } from "../../../common/types/Pokemon";
+import { Pokemon } from "../../../types/Pokemon";
 import { useState } from "react";
 
 type Props = {

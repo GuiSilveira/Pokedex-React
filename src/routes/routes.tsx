@@ -10,7 +10,7 @@ export function AppRouter() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pokemon/:id" element={<Pokemon />} />
-          <Route path="*" element={<ErrorPage />}></Route>
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </>
