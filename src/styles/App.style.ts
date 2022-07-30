@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@800&family=Poppins:wght@400;700&display=swap");
-
   :root {
     --size-1: .8rem;
     --size-2: 1.2rem;

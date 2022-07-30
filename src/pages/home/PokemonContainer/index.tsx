@@ -4,8 +4,8 @@ import {
   StyledPokemonNumber,
 } from "./pokemonContainer.style";
 
-import { ReactComponent as PokemonPreview } from "../../../assets/svg/pokemonShadow.svg";
-import { TYPES } from "../../../constants/types";
+import { ReactComponent as PokemonPreview } from "assets/svg/pokemonShadow.svg";
+import { TYPES } from "data/pokemonTypes";
 
 type Props = {
   pokemonNumber: string;
