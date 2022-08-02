@@ -45,13 +45,7 @@ export default function PokemonTable({ searchedPokemon }: PokemonTableProps) {
                   firstPokemon.id - secondPokemon.id
               )
               .map((pokemon) => (
-                <PokemonContainer
-                  key={pokemon.id}
-                  id={pokemon.id}
-                  name={pokemon.name}
-                  sprites={pokemon.sprites}
-                  types={pokemon.types}
-                />
+                <PokemonContainer key={pokemon.id} pokemon={pokemon} />
               ))
           : pokemonList
               .sort(
@@ -59,13 +53,7 @@ export default function PokemonTable({ searchedPokemon }: PokemonTableProps) {
                   firstPokemon.id - secondPokemon.id
               )
               .map((pokemon) => (
-                <PokemonContainer
-                  key={pokemon.id}
-                  id={pokemon.id}
-                  name={pokemon.name}
-                  sprites={pokemon.sprites}
-                  types={pokemon.types}
-                />
+                <PokemonContainer key={pokemon.id} pokemon={pokemon} />
               ))}
       </StyledList>
     </section>

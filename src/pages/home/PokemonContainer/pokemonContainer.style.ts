@@ -6,6 +6,7 @@ export const StyledListItem = styled.li`
   border-radius: 8px;
   text-align: center;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 StyledListItem.defaultProps = {
