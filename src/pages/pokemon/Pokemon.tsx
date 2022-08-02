@@ -1,8 +1,20 @@
-import { useParams } from "react-router-dom";
 import Header from "./Header";
-import { StyledPokemonDiv } from "./pokemon.style";
+import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
+import PokemonInfo from "./PokemonInfo";
 
 export default function Pokemon() {
-  let { id } = useParams();
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <div>
+        <button>
+          <BiChevronLeft />
+        </button>
+        <button>
+          <BiChevronRight />
+        </button>
+      </div>
+      <PokemonInfo />
+    </>
+  );
 }
