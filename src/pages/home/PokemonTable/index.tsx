@@ -30,22 +30,43 @@ export default function PokemonTable({ searchedPokemon }: PokemonTableProps) {
     );
   }, []);
 
+  const filteredPokemonList =
+    searchedPokemon.length > 0
+      ? pokemonList.filter((pokemon) => pokemon.name.includes(searchedPokemon))
+      : [];
+
   return (
     <section>
       <StyledList>
-        {pokemonList
-          .sort(
-            (firstPokemon, secondPokemon) => firstPokemon.id - secondPokemon.id
-          )
-          .map((pokemon) => (
-            <PokemonContainer
-              key={pokemon.id}
-              id={pokemon.id}
-              name={pokemon.name}
-              sprites={pokemon.sprites}
-              types={pokemon.types}
-            />
-          ))}
+        {searchedPokemon.length > 0
+          ? filteredPokemonList
+              .sort(
+                (firstPokemon, secondPokemon) =>
+                  firstPokemon.id - secondPokemon.id
+              )
+              .map((pokemon) => (
+                <PokemonContainer
+                  key={pokemon.id}
+                  id={pokemon.id}
+                  name={pokemon.name}
+                  sprites={pokemon.sprites}
+                  types={pokemon.types}
+                />
+              ))
+          : pokemonList
+              .sort(
+                (firstPokemon, secondPokemon) =>
+                  firstPokemon.id - secondPokemon.id
+              )
+              .map((pokemon) => (
+                <PokemonContainer
+                  key={pokemon.id}
+                  id={pokemon.id}
+                  name={pokemon.name}
+                  sprites={pokemon.sprites}
+                  types={pokemon.types}
+                />
+              ))}
       </StyledList>
     </section>
   );
