@@ -6,7 +6,7 @@ type Props = {
 };
 
 export default function SearchBar({ setSearchedData }: Props) {
-  const handleSearchedData = (event: ChangeEvent<HTMLInputElement>) => {
+  const passingSearchedData = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchedData(event.target.value);
   };
 
@@ -15,7 +15,7 @@ export default function SearchBar({ setSearchedData }: Props) {
       <StyledInput
         type="search"
         placeholder="Procurar"
-        onChange={handleSearchedData}
+        onChange={passingSearchedData}
       />
     </form>
   );

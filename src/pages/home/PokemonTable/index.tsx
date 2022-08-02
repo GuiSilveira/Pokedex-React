@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import PokemonContainer from "../PokemonContainer";
 
-type Props = {
-  searchPokemon: string;
+type PokemonTableProps = {
+  searchedPokemon: string;
 };
 
-export default function PokemonTable({ searchPokemon }: Props) {
+export default function PokemonTable({ searchedPokemon }: PokemonTableProps) {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
   console.log("Renderizou");
@@ -17,6 +17,13 @@ export default function PokemonTable({ searchPokemon }: Props) {
     axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1154`).then((response) =>
       response.data.results.map((pokemon: any) =>
         axios.get(pokemon.url).then((response) => {
+          const { sprites } = response.data;
+          const { other } = sprites;
+
+          if (!other["official-artwork"].front_default) {
+            return;
+          }
+
           setPokemonList((oldList) => [...oldList, response.data]);
         })
       )

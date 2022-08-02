@@ -15,7 +15,7 @@ export default function Home() {
         <SortButton />
       </StyledDiv>
       <SearchBar setSearchedData={setSearchedPokemon} />
-      <PokemonTable searchPokemon={searchedPokemon} />
+      <PokemonTable searchedPokemon={searchedPokemon} />
     </StyledMain>
   );
 }
