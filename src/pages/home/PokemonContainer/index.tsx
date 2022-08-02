@@ -2,36 +2,31 @@ import {
   StyledListItem,
   StyledPokemonLabel,
   StyledPokemonNumber,
+  PokemonImage,
 } from "./pokemonContainer.style";
-
-import { ReactComponent as PokemonPreview } from "assets/svg/pokemonShadow.svg";
+import PokemonShadow from "assets/svg/pokemonShadow.svg";
 import { TYPES } from "data/pokemonTypes";
-
-type Props = {
-  pokemonNumber: string;
-  pokemonName: string;
-  pokemonType: string;
-};
+import { Pokemon } from "types/Pokemon";
 
 export default function PokemonContainer({
-  pokemonNumber,
-  pokemonName,
-  pokemonType,
-}: Props) {
+  id,
+  name,
+  sprites,
+  types,
+}: Pokemon) {
+  const { type } = types[0];
+  const { other } = sprites;
+
   return (
-    <StyledListItem color={TYPES[pokemonType as keyof typeof TYPES].color}>
+    <StyledListItem color={TYPES[type.name].color}>
       <div>
-        <StyledPokemonNumber
-          color={TYPES[pokemonType as keyof typeof TYPES].color}
-        >
-          {"#" + pokemonNumber.padStart(3, "0")}
+        <StyledPokemonNumber color={TYPES[type.name].color}>
+          {"#" + ("" + id).padStart(3, "0")}
         </StyledPokemonNumber>
-        <PokemonPreview />
+        <PokemonImage url={other["official-artwork"].front_default} />
       </div>
-      <StyledPokemonLabel
-        color={TYPES[pokemonType as keyof typeof TYPES].color}
-      >
-        {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
+      <StyledPokemonLabel color={TYPES[type.name].color}>
+        {name.charAt(0).toUpperCase() + name.slice(1)}
       </StyledPokemonLabel>
     </StyledListItem>
   );

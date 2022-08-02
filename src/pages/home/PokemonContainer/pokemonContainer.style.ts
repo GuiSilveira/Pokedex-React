@@ -33,3 +33,15 @@ export const StyledPokemonLabel = styled.p`
 StyledPokemonLabel.defaultProps = {
   color: "#b8b8b8",
 };
+
+interface PokemonImageProps {
+  url: string;
+}
+
+export const PokemonImage = styled.div<PokemonImageProps>`
+  width: 100px;
+  height: 100px;
+  background: url(${(props) => props.url}) no-repeat center;
+  background-size: contain;
+  margin: 0 auto;
+`;

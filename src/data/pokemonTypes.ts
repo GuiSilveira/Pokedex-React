@@ -47,7 +47,7 @@ export const TYPES = {
   fire: {
     color: "#F57D31",
   },
-  eletric: {
+  electric: {
     color: "#F9CF30",
   },
   dragon: {

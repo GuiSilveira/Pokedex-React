@@ -1,20 +1,44 @@
 import { StyledList } from "./pokemonTable.style";
 import { Pokemon } from "../../../types/Pokemon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import PokemonContainer from "../PokemonContainer";
 
 type Props = {
   searchPokemon: string;
 };
 
 export default function PokemonTable({ searchPokemon }: Props) {
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+
+  console.log("Renderizou");
+
+  useEffect(() => {
+    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1154`).then((response) =>
+      response.data.results.map((pokemon: any) =>
+        axios.get(pokemon.url).then((response) => {
+          setPokemonList((oldList) => [...oldList, response.data]);
+        })
+      )
+    );
+  }, []);
 
   return (
     <section>
       <StyledList>
-        {pokemons.map((pokemon) => (
-          <li key={pokemon.name}>{pokemon.name}</li>
-        ))}
+        {pokemonList
+          .sort(
+            (firstPokemon, secondPokemon) => firstPokemon.id - secondPokemon.id
+          )
+          .map((pokemon) => (
+            <PokemonContainer
+              key={pokemon.id}
+              id={pokemon.id}
+              name={pokemon.name}
+              sprites={pokemon.sprites}
+              types={pokemon.types}
+            />
+          ))}
       </StyledList>
     </section>
   );

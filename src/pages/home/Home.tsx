@@ -6,7 +6,7 @@ import { StyledDiv, StyledMain } from "./home.style";
 import { useState } from "react";
 
 export default function Home() {
-  const [searchPokemon, setSearchPokemon] = useState<string>("");
+  const [searchedPokemon, setSearchedPokemon] = useState<string>("");
 
   return (
     <StyledMain>
@@ -14,8 +14,8 @@ export default function Home() {
         <Logo />
         <SortButton />
       </StyledDiv>
-      <SearchBar setSearchData={setSearchPokemon} />
-      <PokemonTable searchPokemon={searchPokemon} />
+      <SearchBar setSearchedData={setSearchedPokemon} />
+      <PokemonTable searchPokemon={searchedPokemon} />
     </StyledMain>
   );
 }
