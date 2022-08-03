@@ -31,5 +31,22 @@ export const StyledImg = styled.img`
 
 export const StyledList = styled.ul`
   display: flex;
-  margin-top: var(--size-4);
+  gap: 24px;
+  margin: var(--size-4) 0;
+`;
+
+export const StyledListItem = styled.li`
+  text-align: center;
+`;
+
+export const StyledListItemIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: var(--size-1);
+  margin-bottom: 1rem;
+`;
+
+export const StyledListItemMoveTextContainer = styled.div`
+  text-align: left;
+  margin-bottom: 1rem;
 `;

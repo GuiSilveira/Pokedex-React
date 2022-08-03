@@ -5,8 +5,13 @@ import {
   StyledFigCaption,
   StyledImg,
   StyledList,
+  StyledListItem,
+  StyledListItemIconContainer,
+  StyledListItemMoveTextContainer,
 } from "./about.style";
 import pokemonShadow from "assets/svg/pokemonShadow.svg";
+import { ReactComponent as RulerIcon } from "assets/svg/Ruler.svg";
+import { ReactComponent as ScaleIcon } from "assets/svg/Scale.svg";
 
 export default function About() {
   return (
@@ -17,19 +22,27 @@ export default function About() {
       </StyledFigure>
       <StyledH2>About</StyledH2>
       <StyledList>
-        <li>
-          <p>8,5 kg</p>
+        <StyledListItem>
+          <StyledListItemIconContainer>
+            <ScaleIcon />
+            <p>8,5 kg</p>
+          </StyledListItemIconContainer>
           <p>Weight</p>
-        </li>
-        <li>
-          <p>0,6 m</p>
+        </StyledListItem>
+        <StyledListItem>
+          <StyledListItemIconContainer>
+            <RulerIcon />
+            <p>0,6 m</p>
+          </StyledListItemIconContainer>
           <p>Height</p>
-        </li>
-        <li>
-          <p>Mega-Punch</p>
-          <p>Fire-Punch</p>
+        </StyledListItem>
+        <StyledListItem>
+          <StyledListItemMoveTextContainer>
+            <p>Mega-Punch</p>
+            <p>Fire-Punch</p>
+          </StyledListItemMoveTextContainer>
           <p>Moves</p>
-        </li>
+        </StyledListItem>
       </StyledList>
       <p>asdasdasdasd</p>
     </StyledSection>
