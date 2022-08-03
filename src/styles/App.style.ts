@@ -21,6 +21,7 @@ export const GlobalStyles = createGlobalStyle`
 
   html {
     box-sizing: border-box;
+    height: 100%;
   }
 
   *, *:before, *:after {

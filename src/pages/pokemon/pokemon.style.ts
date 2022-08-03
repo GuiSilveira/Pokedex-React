@@ -6,8 +6,6 @@ export const StyledPokemonDiv = styled.div`
   background-position-x: calc(100% - 8px);
   background-position-y: 8px;
   background-size: 60%;
-  width: 100vw;
-  height: 100vh;
 `;
 
 export const StyledButtonDiv = styled.div`
