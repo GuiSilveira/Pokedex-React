@@ -1,20 +1,25 @@
 import Header from "./Header";
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 import PokemonInfo from "./PokemonInfo";
+import {
+  StyledPokemonDiv,
+  StyledButtonDiv,
+  StyledButton,
+} from "./pokemon.style";
 
 export default function Pokemon() {
   return (
-    <>
+    <StyledPokemonDiv>
       <Header />
-      <div>
-        <button>
+      <StyledButtonDiv>
+        <StyledButton>
           <BiChevronLeft />
-        </button>
-        <button>
+        </StyledButton>
+        <StyledButton>
           <BiChevronRight />
-        </button>
-      </div>
+        </StyledButton>
+      </StyledButtonDiv>
       <PokemonInfo />
-    </>
+    </StyledPokemonDiv>
   );
 }

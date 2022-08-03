@@ -4,7 +4,8 @@ export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: var(--size-5);
+  padding: var(--size-5);
+  color: #fff;
 `;
 
 export const StyledDiv = styled.div`
@@ -30,4 +31,5 @@ export const StyledButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+  color: #fff;
 `;

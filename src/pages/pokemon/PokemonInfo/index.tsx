@@ -1,5 +1,12 @@
-import {} from "./pokemonInfo.style";
+import About from "./About";
+import BaseStats from "./BaseStats";
+import { StyledMain } from "./pokemonInfo.style";
 
 export default function PokemonInfo() {
-  return <main></main>;
+  return (
+    <StyledMain>
+      <About />
+      <BaseStats />
+    </StyledMain>
+  );
 }
