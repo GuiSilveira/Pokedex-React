@@ -8,6 +8,9 @@ import {
   StyledListItem,
   StyledListItemIconContainer,
   StyledListItemMoveTextContainer,
+  StyledDarkParagraph,
+  StyledLightParagraph,
+  StyledPokemonDescription,
 } from "./about.style";
 import pokemonShadow from "assets/svg/pokemonShadow.svg";
 import { ReactComponent as RulerIcon } from "assets/svg/Ruler.svg";
@@ -25,26 +28,29 @@ export default function About() {
         <StyledListItem>
           <StyledListItemIconContainer>
             <ScaleIcon />
-            <p>8,5 kg</p>
+            <StyledDarkParagraph>8,5 kg</StyledDarkParagraph>
           </StyledListItemIconContainer>
-          <p>Weight</p>
+          <StyledLightParagraph>Weight</StyledLightParagraph>
         </StyledListItem>
         <StyledListItem>
           <StyledListItemIconContainer>
             <RulerIcon />
-            <p>0,6 m</p>
+            <StyledDarkParagraph>0,6 m</StyledDarkParagraph>
           </StyledListItemIconContainer>
-          <p>Height</p>
+          <StyledLightParagraph>Height</StyledLightParagraph>
         </StyledListItem>
         <StyledListItem>
           <StyledListItemMoveTextContainer>
-            <p>Mega-Punch</p>
-            <p>Fire-Punch</p>
+            <StyledDarkParagraph>Mega-Punch</StyledDarkParagraph>
+            <StyledDarkParagraph>Fire-Punch</StyledDarkParagraph>
           </StyledListItemMoveTextContainer>
-          <p>Moves</p>
+          <StyledLightParagraph>Moves</StyledLightParagraph>
         </StyledListItem>
       </StyledList>
-      <p>asdasdasdasd</p>
+      <StyledPokemonDescription>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis
+        eros vitae tellus condimentum maximus sit amet in eros.
+      </StyledPokemonDescription>
     </StyledSection>
   );
 }

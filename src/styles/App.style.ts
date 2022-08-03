@@ -9,6 +9,12 @@ export const GlobalStyles = createGlobalStyle`
     --size-5: 2.4rem;
     --size-6: 3.2rem;
 
+    --dark-grey: #212121;
+    --medium-grey: #666666;
+    --light-grey: #e0e0e0;
+    --white: #fff;
+    --background: #f7f7f7;
+
     font-family: "Poppins", sans-serif;
     font-size: 10px;
   }
