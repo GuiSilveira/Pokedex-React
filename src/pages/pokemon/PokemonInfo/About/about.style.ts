@@ -16,11 +16,15 @@ export const StyledFigure = styled.figure`
 export const StyledFigCaption = styled.figcaption`
   color: var(--white);
   font-weight: 700;
-  background-color: coral;
+  background-color: ${(props) => props.color};
   padding: 4px var(--size-2);
   border-radius: 10px;
   margin-top: 5.6rem;
 `;
+
+StyledFigCaption.defaultProps = {
+  color: "var(--light-grey)",
+};
 
 export const StyledImg = styled.img`
   position: absolute;

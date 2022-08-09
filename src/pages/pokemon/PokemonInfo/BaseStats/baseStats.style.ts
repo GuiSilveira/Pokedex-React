@@ -26,8 +26,12 @@ export const StyledStatNameDiv = styled(StyledStatDiv)`
 
 export const StyledStatName = styled.p`
   font-weight: 700;
-  color: coral;
+  color: ${(props) => props.color};
 `;
+
+StyledStatName.defaultProps = {
+  color: "var(--dark-grey)",
+};
 
 export const StyledStatNumber = styled.p`
   color: var(--dark-grey);

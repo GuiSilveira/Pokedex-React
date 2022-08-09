@@ -1,3 +1,4 @@
+import { TYPES } from "data/pokemonTypes";
 import { StyledH2 } from "styles/sectionTitle.style";
 import {
   StyledDiv,
@@ -9,37 +10,49 @@ import {
   StyledStatNumber,
 } from "./baseStats.style";
 
-export default function BaseStats() {
+type BaseStatsProps = {
+  type: string;
+  stats: object;
+};
+
+export default function BaseStats({ type, stats }: BaseStatsProps) {
+  const hp = stats[0].base_stat;
+  const atk = stats[1].base_stat;
+  const def = stats[2].base_stat;
+  const satk = stats[3].base_stat;
+  const sdef = stats[4].base_stat;
+  const spd = stats[5].base_stat;
+
   return (
     <StyledSection>
-      <StyledH2>Base Stats</StyledH2>
+      <StyledH2 color={TYPES[type].color}>Base Stats</StyledH2>
       <StyledDiv>
         <StyledStatNameDiv>
-          <StyledStatName>HP</StyledStatName>
-          <StyledStatName>ATK</StyledStatName>
-          <StyledStatName>DEF</StyledStatName>
-          <StyledStatName>SATK</StyledStatName>
-          <StyledStatName>SDEF</StyledStatName>
-          <StyledStatName>SPD</StyledStatName>
+          <StyledStatName color={TYPES[type].color}>HP</StyledStatName>
+          <StyledStatName color={TYPES[type].color}>ATK</StyledStatName>
+          <StyledStatName color={TYPES[type].color}>DEF</StyledStatName>
+          <StyledStatName color={TYPES[type].color}>SATK</StyledStatName>
+          <StyledStatName color={TYPES[type].color}>SDEF</StyledStatName>
+          <StyledStatName color={TYPES[type].color}>SPD</StyledStatName>
         </StyledStatNameDiv>
         <StyledStatDiv>
           <StyledStatNumber>
-            045 <StyledStatBar />
+            {hp} <StyledStatBar />
           </StyledStatNumber>
           <StyledStatNumber>
-            045 <StyledStatBar />
+            {atk} <StyledStatBar />
           </StyledStatNumber>
           <StyledStatNumber>
-            045 <StyledStatBar />
+            {def} <StyledStatBar />
           </StyledStatNumber>
           <StyledStatNumber>
-            045 <StyledStatBar />
+            {satk} <StyledStatBar />
           </StyledStatNumber>
           <StyledStatNumber>
-            045 <StyledStatBar />
+            {sdef} <StyledStatBar />
           </StyledStatNumber>
           <StyledStatNumber>
-            045 <StyledStatBar />
+            {spd} <StyledStatBar />
           </StyledStatNumber>
         </StyledStatDiv>
       </StyledDiv>

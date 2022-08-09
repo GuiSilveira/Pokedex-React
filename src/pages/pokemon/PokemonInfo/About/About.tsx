@@ -16,22 +16,25 @@ import pokemonShadow from "assets/svg/pokemonShadow.svg";
 import { firstLetterToUppercase } from "utils/firstLetterToUppercase";
 import { ReactComponent as RulerIcon } from "assets/svg/Ruler.svg";
 import { ReactComponent as ScaleIcon } from "assets/svg/Scale.svg";
+import { TYPES } from "data/pokemonTypes";
 
 type AboutProps = {
-  url: string;
+  sprite: string;
   type: string;
   height: number;
   weight: number;
 };
 
-export default function About({ url, type, height, weight }: AboutProps) {
+export default function About({ sprite, type, height, weight }: AboutProps) {
   return (
     <StyledSection>
       <StyledFigure>
         <StyledImg src={pokemonShadow} alt="Pokemon Image" />
-        <StyledFigCaption>{firstLetterToUppercase(type)}</StyledFigCaption>
+        <StyledFigCaption color={TYPES[type].color}>
+          {firstLetterToUppercase(type)}
+        </StyledFigCaption>
       </StyledFigure>
-      <StyledH2>About</StyledH2>
+      <StyledH2 color={TYPES[type].color}>About</StyledH2>
       <StyledList>
         <StyledListItem>
           <StyledListItemIconContainer>

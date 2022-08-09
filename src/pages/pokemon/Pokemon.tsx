@@ -17,6 +17,8 @@ export default function Pokemon() {
   const pokemonData = location.state["pokemon"] as PokemonType;
   const pokemonType = pokemonData.types[0].type.name;
 
+  console.log(pokemonData);
+
   return (
     <StyledPokemonDiv color={TYPES[pokemonType].color}>
       <Header id={pokemonData.id} name={pokemonData.name} />
@@ -31,13 +33,13 @@ export default function Pokemon() {
       <PokemonInfo
         About={
           <About
-            url={""}
+            sprite={""}
             type={pokemonType}
             height={pokemonData.height}
             weight={pokemonData.weight}
           />
         }
-        BaseStats={<BaseStats />}
+        BaseStats={<BaseStats type={pokemonType} stats={pokemonData.stats} />}
       />
     </StyledPokemonDiv>
   );
