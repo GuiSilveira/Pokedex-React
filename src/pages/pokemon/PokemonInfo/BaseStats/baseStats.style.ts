@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledSection = styled.section`
   text-align: center;
+  padding-bottom: var(--size-5);
 `;
 
 export const StyledDiv = styled.div`

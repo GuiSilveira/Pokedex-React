@@ -7,6 +7,8 @@ import {
 import { TYPES } from "data/pokemonTypes";
 import { Pokemon } from "types/Pokemon";
 import { useNavigate } from "react-router-dom";
+import { firstLetterToUppercase } from "utils/firstLetterToUppercase";
+import { formatPokemonNumber } from "utils/formatPokemonNumber";
 
 interface PokemonContainerProps {
   pokemon: Pokemon;
@@ -28,12 +30,12 @@ export default function PokemonContainer({ pokemon }: PokemonContainerProps) {
     >
       <div>
         <StyledPokemonNumber color={TYPES[type.name].color}>
-          {"#" + ("" + pokemon.id).padStart(3, "0")}
+          {formatPokemonNumber(pokemon.id)}
         </StyledPokemonNumber>
         <PokemonImage url={other["official-artwork"].front_default} />
       </div>
       <StyledPokemonLabel color={TYPES[type.name].color}>
-        {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+        {firstLetterToUppercase(pokemon.name)}
       </StyledPokemonLabel>
     </StyledListItem>
   );

@@ -13,29 +13,37 @@ import {
   StyledPokemonDescription,
 } from "./about.style";
 import pokemonShadow from "assets/svg/pokemonShadow.svg";
+import { firstLetterToUppercase } from "utils/firstLetterToUppercase";
 import { ReactComponent as RulerIcon } from "assets/svg/Ruler.svg";
 import { ReactComponent as ScaleIcon } from "assets/svg/Scale.svg";
 
-export default function About() {
+type AboutProps = {
+  url: string;
+  type: string;
+  height: number;
+  weight: number;
+};
+
+export default function About({ url, type, height, weight }: AboutProps) {
   return (
     <StyledSection>
       <StyledFigure>
         <StyledImg src={pokemonShadow} alt="Pokemon Image" />
-        <StyledFigCaption>Fire</StyledFigCaption>
+        <StyledFigCaption>{firstLetterToUppercase(type)}</StyledFigCaption>
       </StyledFigure>
       <StyledH2>About</StyledH2>
       <StyledList>
         <StyledListItem>
           <StyledListItemIconContainer>
             <ScaleIcon />
-            <StyledDarkParagraph>8,5 kg</StyledDarkParagraph>
+            <StyledDarkParagraph>{weight} kg</StyledDarkParagraph>
           </StyledListItemIconContainer>
           <StyledLightParagraph>Weight</StyledLightParagraph>
         </StyledListItem>
         <StyledListItem>
           <StyledListItemIconContainer>
             <RulerIcon />
-            <StyledDarkParagraph>0,6 m</StyledDarkParagraph>
+            <StyledDarkParagraph>{height} m</StyledDarkParagraph>
           </StyledListItemIconContainer>
           <StyledLightParagraph>Height</StyledLightParagraph>
         </StyledListItem>
