@@ -9,4 +9,5 @@ export type Pokemon = {
   height: number;
   weight: number;
   moves: object;
+  species: object;
 };

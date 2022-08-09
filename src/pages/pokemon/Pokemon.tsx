@@ -15,12 +15,14 @@ import BaseStats from "./PokemonInfo/BaseStats";
 export default function Pokemon() {
   const location = useLocation();
   const pokemonData = location.state["pokemon"] as PokemonType;
-  const pokemonType = pokemonData.types[0].type.name;
-
-  console.log(pokemonData);
+  const pokemonFirstType = pokemonData.types[0].type.name;
+  const pokemonColor = TYPES[pokemonFirstType].color;
+  const pokemonTypes = pokemonData.types;
+  const pokemonSprites = pokemonData.sprites;
+  const url = pokemonData.species["url"];
 
   return (
-    <StyledPokemonDiv color={TYPES[pokemonType].color}>
+    <StyledPokemonDiv color={pokemonColor}>
       <Header id={pokemonData.id} name={pokemonData.name} />
       <StyledButtonDiv>
         <StyledButton>
@@ -33,13 +35,17 @@ export default function Pokemon() {
       <PokemonInfo
         About={
           <About
-            sprite={""}
-            type={pokemonType}
+            sprite={pokemonSprites.other["official-artwork"].front_default}
+            types={pokemonTypes}
+            pokemonColor={pokemonColor}
             height={pokemonData.height}
             weight={pokemonData.weight}
+            urlDescription={url}
           />
         }
-        BaseStats={<BaseStats type={pokemonType} stats={pokemonData.stats} />}
+        BaseStats={
+          <BaseStats type={pokemonFirstType} stats={pokemonData.stats} />
+        }
       />
     </StyledPokemonDiv>
   );

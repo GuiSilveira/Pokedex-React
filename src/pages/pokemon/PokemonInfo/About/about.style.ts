@@ -13,6 +13,11 @@ export const StyledFigure = styled.figure`
   margin-bottom: var(--size-4);
 `;
 
+export const StyledFigCaptionDiv = styled.div`
+  display: flex;
+  gap: var(--size-2);
+`;
+
 export const StyledFigCaption = styled.figcaption`
   color: var(--white);
   font-weight: 700;

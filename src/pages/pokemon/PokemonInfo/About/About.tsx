@@ -11,42 +11,80 @@ import {
   StyledDarkParagraph,
   StyledLightParagraph,
   StyledPokemonDescription,
+  StyledFigCaptionDiv,
 } from "./about.style";
-import pokemonShadow from "assets/svg/pokemonShadow.svg";
+
 import { firstLetterToUppercase } from "utils/firstLetterToUppercase";
 import { ReactComponent as RulerIcon } from "assets/svg/Ruler.svg";
 import { ReactComponent as ScaleIcon } from "assets/svg/Scale.svg";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { TYPES } from "data/pokemonTypes";
 
 type AboutProps = {
   sprite: string;
-  type: string;
+  types: object;
+  pokemonColor: string;
   height: number;
   weight: number;
+  urlDescription: string;
 };
 
-export default function About({ sprite, type, height, weight }: AboutProps) {
+export default function About({
+  sprite,
+  types,
+  pokemonColor,
+  height,
+  weight,
+  urlDescription,
+}: AboutProps) {
+  const [description, setDescription] = useState<string>("");
+  const pokemonTypes = types as [];
+  console.log(pokemonTypes);
+
+  useEffect(() => {
+    axios
+      .get(urlDescription)
+      .then((response) => response.data)
+      .then((data) => {
+        const flavorText = data.flavor_text_entries[0].flavor_text;
+
+        const formattedFlavorText = flavorText.replace("\f", " ");
+
+        setDescription(formattedFlavorText);
+      });
+  }, [description]);
+
   return (
     <StyledSection>
       <StyledFigure>
-        <StyledImg src={pokemonShadow} alt="Pokemon Image" />
-        <StyledFigCaption color={TYPES[type].color}>
-          {firstLetterToUppercase(type)}
-        </StyledFigCaption>
+        <StyledImg src={sprite} alt="Pokemon Image" />
+        <StyledFigCaptionDiv>
+          {pokemonTypes.map((type) => {
+            const typeName = type["type"]["name"];
+            const typeColor = TYPES[typeName]["color"];
+
+            return (
+              <StyledFigCaption key={typeName} color={typeColor}>
+                {firstLetterToUppercase(typeName)}
+              </StyledFigCaption>
+            );
+          })}
+        </StyledFigCaptionDiv>
       </StyledFigure>
-      <StyledH2 color={TYPES[type].color}>About</StyledH2>
+      <StyledH2 color={pokemonColor}>About</StyledH2>
       <StyledList>
         <StyledListItem>
           <StyledListItemIconContainer>
             <ScaleIcon />
-            <StyledDarkParagraph>{weight} kg</StyledDarkParagraph>
+            <StyledDarkParagraph>{weight / 10} kg</StyledDarkParagraph>
           </StyledListItemIconContainer>
           <StyledLightParagraph>Weight</StyledLightParagraph>
         </StyledListItem>
         <StyledListItem>
           <StyledListItemIconContainer>
             <RulerIcon />
-            <StyledDarkParagraph>{height} m</StyledDarkParagraph>
+            <StyledDarkParagraph>{height / 10} m</StyledDarkParagraph>
           </StyledListItemIconContainer>
           <StyledLightParagraph>Height</StyledLightParagraph>
         </StyledListItem>
@@ -58,10 +96,7 @@ export default function About({ sprite, type, height, weight }: AboutProps) {
           <StyledLightParagraph>Moves</StyledLightParagraph>
         </StyledListItem>
       </StyledList>
-      <StyledPokemonDescription>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc iaculis
-        eros vitae tellus condimentum maximus sit amet in eros.
-      </StyledPokemonDescription>
+      <StyledPokemonDescription>{description}</StyledPokemonDescription>
     </StyledSection>
   );
 }
