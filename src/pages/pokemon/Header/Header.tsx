@@ -8,6 +8,7 @@ import {
 import { BiArrowBack } from "react-icons/bi";
 import { firstLetterToUppercase } from "utils/firstLetterToUppercase";
 import { formatPokemonNumber } from "utils/formatPokemonNumber";
+import { useNavigate } from "react-router-dom";
 
 type HeaderProps = {
   id: number;
@@ -15,10 +16,12 @@ type HeaderProps = {
 };
 
 export default function Header({ id, name }: HeaderProps) {
+  const navigate = useNavigate();
+
   return (
     <StyledHeader>
       <StyledDiv>
-        <StyledButton>
+        <StyledButton onClick={() => navigate("/")}>
           <BiArrowBack />
         </StyledButton>
         <StyledH1>{firstLetterToUppercase(name)}</StyledH1>
