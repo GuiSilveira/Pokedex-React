@@ -20,6 +20,7 @@ import { ReactComponent as ScaleIcon } from "assets/svg/Scale.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { TYPES } from "data/pokemonTypes";
+import { usePokemonDescription } from "hooks/usePokemonDescription";
 
 type AboutProps = {
   sprite: string;
@@ -38,22 +39,9 @@ export default function About({
   weight,
   urlDescription,
 }: AboutProps) {
-  const [description, setDescription] = useState<string>("");
+  const description = usePokemonDescription(urlDescription);
   const pokemonTypes = types as [];
   console.log(pokemonTypes);
-
-  useEffect(() => {
-    axios
-      .get(urlDescription)
-      .then((response) => response.data)
-      .then((data) => {
-        const flavorText = data.flavor_text_entries[0].flavor_text;
-
-        const formattedFlavorText = flavorText.replace("\f", " ");
-
-        setDescription(formattedFlavorText);
-      });
-  }, [description]);
 
   return (
     <StyledSection>

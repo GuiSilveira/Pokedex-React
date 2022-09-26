@@ -1,60 +1,48 @@
 import { StyledList } from "./pokemonTable.style";
-import { Pokemon } from "../../../types/Pokemon";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import PokemonContainer from "../PokemonContainer";
+import { getPokemonList, LIMIT_ITEMS_POKEMON } from "services";
 
 type PokemonTableProps = {
   searchedPokemon: string;
 };
 
-export default function PokemonTable({ searchedPokemon }: PokemonTableProps) {
-  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+interface IPokemonList {
+  name: string;
+  url: string;
+}
 
-  console.log("Renderizou");
+export default function PokemonTable({ searchedPokemon }: PokemonTableProps) {
+  const [pokemonList, setPokemonList] = useState<IPokemonList[]>([]);
+  const [nextUrl, setNextUrl] = useState("");
+
+  const initializePage = async () => {
+    const data = await getPokemonList();
+    setNextUrl(data.next);
+    setPokemonList(data.results);
+  };
+
+  const loadMore = async () => {
+    const url = nextUrl
+      .replace("https://pokeapi.co/api/v2/", "")
+      .replace(`limit=${LIMIT_ITEMS_POKEMON}`, "");
+    const data = await getPokemonList(url);
+    setNextUrl(data.next);
+    setPokemonList([...pokemonList, ...data.results]);
+  };
 
   useEffect(() => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1154`).then((response) =>
-      response.data.results.map((pokemon: any) =>
-        axios.get(pokemon.url).then((response) => {
-          const { sprites } = response.data;
-          const { other } = sprites;
-
-          if (!other["official-artwork"].front_default) {
-            return;
-          }
-
-          setPokemonList((oldList) => [...oldList, response.data]);
-        })
-      )
-    );
+    initializePage();
   }, []);
-
-  const filteredPokemonList =
-    searchedPokemon.length > 0
-      ? pokemonList.filter((pokemon) => pokemon.name.includes(searchedPokemon))
-      : [];
 
   return (
     <section>
       <StyledList>
-        {searchedPokemon.length > 0
-          ? filteredPokemonList
-              .sort(
-                (firstPokemon, secondPokemon) =>
-                  firstPokemon.id - secondPokemon.id
-              )
-              .map((pokemon) => (
-                <PokemonContainer key={pokemon.id} pokemon={pokemon} />
-              ))
-          : pokemonList
-              .sort(
-                (firstPokemon, secondPokemon) =>
-                  firstPokemon.id - secondPokemon.id
-              )
-              .map((pokemon) => (
-                <PokemonContainer key={pokemon.id} pokemon={pokemon} />
-              ))}
+        {pokemonList.map((item) => (
+          <PokemonContainer key={item.name} url={item.url} />
+        ))}
+
+        <button onClick={() => loadMore()}>Carregar Mais</button>
       </StyledList>
     </section>
   );

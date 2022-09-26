@@ -1,8 +1,8 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import { StyledInput } from "./seachBar.style";
 
 type Props = {
-  setSearchedData: Function;
+  setSearchedData: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export default function SearchBar({ setSearchedData }: Props) {

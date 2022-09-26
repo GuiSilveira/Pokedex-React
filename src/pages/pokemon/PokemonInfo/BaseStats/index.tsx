@@ -8,12 +8,17 @@ import {
   StyledStatName,
   StyledStatNameDiv,
   StyledStatNumber,
+  StyledStatBarContainer,
 } from "./baseStats.style";
 
 type BaseStatsProps = {
   type: string;
   stats: object;
 };
+
+interface StyledStatBarProps {
+  bg: string;
+}
 
 export default function BaseStats({ type, stats }: BaseStatsProps) {
   const hp = stats[0].base_stat;
@@ -37,22 +42,40 @@ export default function BaseStats({ type, stats }: BaseStatsProps) {
         </StyledStatNameDiv>
         <StyledStatDiv>
           <StyledStatNumber>
-            {hp} <StyledStatBar />
+            {hp}
+            <StyledStatBarContainer>
+              <StyledStatBar widthSize={hp} color={TYPES[type].color} />
+            </StyledStatBarContainer>
           </StyledStatNumber>
           <StyledStatNumber>
-            {atk} <StyledStatBar />
+            {atk}
+            <StyledStatBarContainer>
+              <StyledStatBar widthSize={atk} color={TYPES[type].color} />
+            </StyledStatBarContainer>
           </StyledStatNumber>
           <StyledStatNumber>
-            {def} <StyledStatBar />
+            {def}
+            <StyledStatBarContainer>
+              <StyledStatBar widthSize={def} color={TYPES[type].color} />
+            </StyledStatBarContainer>
           </StyledStatNumber>
           <StyledStatNumber>
-            {satk} <StyledStatBar />
+            {satk}
+            <StyledStatBarContainer>
+              <StyledStatBar widthSize={satk} color={TYPES[type].color} />
+            </StyledStatBarContainer>
           </StyledStatNumber>
           <StyledStatNumber>
-            {sdef} <StyledStatBar />
+            {sdef}
+            <StyledStatBarContainer>
+              <StyledStatBar widthSize={sdef} color={TYPES[type].color} />
+            </StyledStatBarContainer>
           </StyledStatNumber>
           <StyledStatNumber>
-            {spd} <StyledStatBar />
+            {spd}
+            <StyledStatBarContainer>
+              <StyledStatBar widthSize={spd} color={TYPES[type].color} />
+            </StyledStatBarContainer>
           </StyledStatNumber>
         </StyledStatDiv>
       </StyledDiv>

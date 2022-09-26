@@ -6,7 +6,7 @@ import { StyledDiv, StyledMain } from "./home.style";
 import { useState } from "react";
 
 export default function Home() {
-  const [searchedPokemon, setSearchedPokemon] = useState<string>("");
+  const [searchedPokemon, setSearchedPokemon] = useState("");
 
   return (
     <StyledMain>
