@@ -17,8 +17,6 @@ import {
 import { firstLetterToUppercase } from "utils/firstLetterToUppercase";
 import { ReactComponent as RulerIcon } from "assets/svg/Ruler.svg";
 import { ReactComponent as ScaleIcon } from "assets/svg/Scale.svg";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { TYPES } from "data/pokemonTypes";
 import { usePokemonDescription } from "hooks/usePokemonDescription";
 
@@ -29,6 +27,7 @@ type AboutProps = {
   height: number;
   weight: number;
   urlDescription: string;
+  moves: object;
 };
 
 export default function About({
@@ -38,10 +37,10 @@ export default function About({
   height,
   weight,
   urlDescription,
+  moves,
 }: AboutProps) {
   const description = usePokemonDescription(urlDescription);
   const pokemonTypes = types as [];
-  console.log(pokemonTypes);
 
   return (
     <StyledSection>
@@ -78,8 +77,12 @@ export default function About({
         </StyledListItem>
         <StyledListItem>
           <StyledListItemMoveTextContainer>
-            <StyledDarkParagraph>Mega-Punch</StyledDarkParagraph>
-            <StyledDarkParagraph>Fire-Punch</StyledDarkParagraph>
+            <StyledDarkParagraph>
+              {firstLetterToUppercase(moves[16].move.name)}
+            </StyledDarkParagraph>
+            <StyledDarkParagraph>
+              {firstLetterToUppercase(moves[17].move.name)}
+            </StyledDarkParagraph>
           </StyledListItemMoveTextContainer>
           <StyledLightParagraph>Moves</StyledLightParagraph>
         </StyledListItem>

@@ -1,5 +1,6 @@
 import { TYPES } from "data/pokemonTypes";
 import { StyledH2 } from "styles/sectionTitle.style";
+import { isGreaterThanOneHundred } from "utils/isGreaterThanOneHundred";
 import {
   StyledDiv,
   StyledSection,
@@ -44,37 +45,55 @@ export default function BaseStats({ type, stats }: BaseStatsProps) {
           <StyledStatNumber>
             {hp}
             <StyledStatBarContainer>
-              <StyledStatBar widthSize={hp} color={TYPES[type].color} />
+              <StyledStatBar
+                widthSize={isGreaterThanOneHundred(hp)}
+                color={TYPES[type].color}
+              />
             </StyledStatBarContainer>
           </StyledStatNumber>
           <StyledStatNumber>
             {atk}
             <StyledStatBarContainer>
-              <StyledStatBar widthSize={atk} color={TYPES[type].color} />
+              <StyledStatBar
+                widthSize={isGreaterThanOneHundred(atk)}
+                color={TYPES[type].color}
+              />
             </StyledStatBarContainer>
           </StyledStatNumber>
           <StyledStatNumber>
             {def}
             <StyledStatBarContainer>
-              <StyledStatBar widthSize={def} color={TYPES[type].color} />
+              <StyledStatBar
+                widthSize={isGreaterThanOneHundred(def)}
+                color={TYPES[type].color}
+              />
             </StyledStatBarContainer>
           </StyledStatNumber>
           <StyledStatNumber>
             {satk}
             <StyledStatBarContainer>
-              <StyledStatBar widthSize={satk} color={TYPES[type].color} />
+              <StyledStatBar
+                widthSize={isGreaterThanOneHundred(satk)}
+                color={TYPES[type].color}
+              />
             </StyledStatBarContainer>
           </StyledStatNumber>
           <StyledStatNumber>
             {sdef}
             <StyledStatBarContainer>
-              <StyledStatBar widthSize={sdef} color={TYPES[type].color} />
+              <StyledStatBar
+                widthSize={isGreaterThanOneHundred(sdef)}
+                color={TYPES[type].color}
+              />
             </StyledStatBarContainer>
           </StyledStatNumber>
           <StyledStatNumber>
             {spd}
             <StyledStatBarContainer>
-              <StyledStatBar widthSize={spd} color={TYPES[type].color} />
+              <StyledStatBar
+                widthSize={isGreaterThanOneHundred(spd)}
+                color={TYPES[type].color}
+              />
             </StyledStatBarContainer>
           </StyledStatNumber>
         </StyledStatDiv>

@@ -12,13 +12,14 @@ import { TYPES } from "data/pokemonTypes";
 import About from "./PokemonInfo/About/About";
 import BaseStats from "./PokemonInfo/BaseStats";
 
-export default function Pokemon() {
+export default async function Pokemon() {
   const location = useLocation();
   const pokemonData = location.state["pokemon"] as PokemonType;
   const pokemonFirstType = pokemonData.types[0].type.name;
   const pokemonColor = TYPES[pokemonFirstType].color;
   const pokemonTypes = pokemonData.types;
   const pokemonSprites = pokemonData.sprites;
+  const pokemonMoves = pokemonData.moves;
   const url = pokemonData.species["url"];
 
   return (
@@ -41,6 +42,7 @@ export default function Pokemon() {
             height={pokemonData.height}
             weight={pokemonData.weight}
             urlDescription={url}
+            moves={pokemonMoves}
           />
         }
         BaseStats={
@@ -49,4 +51,7 @@ export default function Pokemon() {
       />
     </StyledPokemonDiv>
   );
+}
+function getPokemonList() {
+  throw new Error("Function not implemented.");
 }

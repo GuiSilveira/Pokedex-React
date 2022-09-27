@@ -3,16 +3,12 @@ import { useEffect, useState } from "react";
 import PokemonContainer from "../PokemonContainer";
 import { getPokemonList, LIMIT_ITEMS_POKEMON } from "services";
 
-type PokemonTableProps = {
-  searchedPokemon: string;
-};
-
 interface IPokemonList {
   name: string;
   url: string;
 }
 
-export default function PokemonTable({ searchedPokemon }: PokemonTableProps) {
+export default function PokemonTable() {
   const [pokemonList, setPokemonList] = useState<IPokemonList[]>([]);
   const [nextUrl, setNextUrl] = useState("");
 

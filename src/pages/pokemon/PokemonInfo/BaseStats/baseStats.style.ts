@@ -37,7 +37,7 @@ StyledStatName.defaultProps = {
   color: "var(--dark-grey)",
 };
 
-export const StyledStatNumber = styled.p`
+export const StyledStatNumber = styled.div`
   color: var(--dark-grey);
   display: flex;
   align-items: center;
