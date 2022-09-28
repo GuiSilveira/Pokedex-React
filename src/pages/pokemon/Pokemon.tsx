@@ -6,32 +6,57 @@ import {
   StyledButtonDiv,
   StyledButton,
 } from "./pokemon.style";
-import { useLocation } from "react-router-dom";
-import { Pokemon as PokemonType } from "types/Pokemon";
+import { useLocation, useNavigate } from "react-router-dom";
 import { TYPES } from "data/pokemonTypes";
 import About from "./PokemonInfo/About/About";
 import BaseStats from "./PokemonInfo/BaseStats";
+import { usePokemonCount } from "hooks/usePokemonCount";
+import { Pokemon as TPokemon } from "types/Pokemon";
+import { redirectToPokemon } from "utils/redirectToPokemon";
+import { usePokemon } from "hooks";
 
-export default async function Pokemon() {
+export default function Pokemon() {
   const location = useLocation();
-  const pokemonData = location.state["pokemon"] as PokemonType;
+  const navigate = useNavigate();
+  const pokemonCount = usePokemonCount();
+  const pokemonData = location.state["pokemon"] as TPokemon;
   const pokemonFirstType = pokemonData.types[0].type.name;
   const pokemonColor = TYPES[pokemonFirstType].color;
   const pokemonTypes = pokemonData.types;
   const pokemonSprites = pokemonData.sprites;
   const pokemonMoves = pokemonData.moves;
+  const pokemonId = pokemonData.id;
   const url = pokemonData.species["url"];
+
+  const previousPokemon = usePokemon(`pokemon/${pokemonId - 1}`, pokemonCount);
+  const nextPokemon = usePokemon(`pokemon/${pokemonId + 1}`, pokemonCount);
+
+  const onNext = () => {
+    redirectToPokemon(nextPokemon.pokemon, navigate);
+  };
+
+  const onPrevious = () => {
+    redirectToPokemon(previousPokemon.pokemon, navigate);
+  };
 
   return (
     <StyledPokemonDiv color={pokemonColor}>
-      <Header id={pokemonData.id} name={pokemonData.name} />
+      <Header id={pokemonId} name={pokemonData.name} />
       <StyledButtonDiv>
-        <StyledButton>
-          <BiChevronLeft />
-        </StyledButton>
-        <StyledButton>
-          <BiChevronRight />
-        </StyledButton>
+        {pokemonId > 1 ? (
+          <StyledButton onClick={onPrevious}>
+            <BiChevronLeft />
+          </StyledButton>
+        ) : (
+          <div></div>
+        )}
+        {pokemonId <= pokemonCount ? (
+          <StyledButton onClick={onNext}>
+            <BiChevronRight />
+          </StyledButton>
+        ) : (
+          <div></div>
+        )}
       </StyledButtonDiv>
       <PokemonInfo
         About={
@@ -51,7 +76,4 @@ export default async function Pokemon() {
       />
     </StyledPokemonDiv>
   );
-}
-function getPokemonList() {
-  throw new Error("Function not implemented.");
 }

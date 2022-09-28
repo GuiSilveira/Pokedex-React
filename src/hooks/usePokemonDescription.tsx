@@ -15,7 +15,7 @@ export const usePokemonDescription = (urlDescription) => {
 
         setDescription(formattedFlavorText);
       });
-  }, [description]);
+  }, [urlDescription]);
 
   return description;
 };

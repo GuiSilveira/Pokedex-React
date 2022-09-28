@@ -5,11 +5,11 @@ import {
   PokemonImage,
 } from "./pokemonContainer.style";
 import { TYPES } from "data/pokemonTypes";
-import { Pokemon } from "types/Pokemon";
 import { useNavigate } from "react-router-dom";
 import { firstLetterToUppercase } from "utils/firstLetterToUppercase";
 import { formatPokemonNumber } from "utils/formatPokemonNumber";
 import { usePokemon } from "hooks";
+import { redirectToPokemon } from "utils/redirectToPokemon";
 
 interface PokemonContainerProps {
   url: string;
@@ -48,10 +48,6 @@ export default function PokemonContainer({ url }: PokemonContainerProps) {
 
   const navigate = useNavigate();
 
-  const redirectToPokemon = function (pokemon: Pokemon) {
-    navigate(`/pokemon/${pokemon.name}`, { state: { pokemon } });
-  };
-
   if (isLoading) {
     return <div className="container">carregando ...</div>;
   }
@@ -63,7 +59,7 @@ export default function PokemonContainer({ url }: PokemonContainerProps) {
   return (
     <StyledListItem
       color={TYPES[getPokemonTypesInfo(pokemon.types)].color}
-      onClick={() => redirectToPokemon(pokemon)}
+      onClick={() => redirectToPokemon(pokemon, navigate)}
     >
       <div>
         <StyledPokemonNumber

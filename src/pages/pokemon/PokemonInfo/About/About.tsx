@@ -78,10 +78,10 @@ export default function About({
         <StyledListItem>
           <StyledListItemMoveTextContainer>
             <StyledDarkParagraph>
-              {firstLetterToUppercase(moves[16].move.name)}
+              {firstLetterToUppercase(moves[0].move.name)}
             </StyledDarkParagraph>
             <StyledDarkParagraph>
-              {firstLetterToUppercase(moves[17].move.name)}
+              {firstLetterToUppercase(moves[1].move.name)}
             </StyledDarkParagraph>
           </StyledListItemMoveTextContainer>
           <StyledLightParagraph>Moves</StyledLightParagraph>

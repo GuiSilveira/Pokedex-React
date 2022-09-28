@@ -17,10 +17,6 @@ type BaseStatsProps = {
   stats: object;
 };
 
-interface StyledStatBarProps {
-  bg: string;
-}
-
 export default function BaseStats({ type, stats }: BaseStatsProps) {
   const hp = stats[0].base_stat;
   const atk = stats[1].base_stat;

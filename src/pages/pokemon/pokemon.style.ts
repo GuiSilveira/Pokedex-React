@@ -7,6 +7,8 @@ export const StyledPokemonDiv = styled.div`
   background-position-y: 8px;
   background-size: 60%;
   padding-bottom: 0.1rem;
+  width: 100%;
+  height: 100vh;
 `;
 
 StyledPokemonDiv.defaultProps = {
